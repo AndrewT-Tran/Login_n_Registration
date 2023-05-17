@@ -1,7 +1,8 @@
-from flask_app.config.mysqlconnection import connectToMySQL
-from flask import flash, request
-from flask_app.models import login
-
+from flask import Flask, render_template, redirect, request, session, flash
+from mysqlconnection import connectToMySQL
+from flask_bcrypt import Bcrypt
+app = Flask(__name__)
+Bcrypt = Bcrypt(app)
 
 # Have import from mysqlconnection on every model for DB interactions
 # Import the model's python file as a module, not the class directly so you avoid circular import errors!
@@ -23,7 +24,8 @@ REMEMBER TO PARSE DATA INTO OBJECTS BEFORE SENDING TO PAGES!
 class validate:
     def __init__(self, data):
         self.id = data['id']
-        self.name = data['name']
+        self.first_name = data['first_name']
+        self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
         self.created_at = data['created_at']
