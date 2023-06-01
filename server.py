@@ -1,7 +1,10 @@
-from flask import Flask, render_template, redirect, request, session, flash
 import re
-from mysqlconnection import connectToMySQL
+
+from flask import Flask, flash, redirect, render_template, request, session
 from flask_bcrypt import Bcrypt
+
+from mysqlconnection import connectToMySQL
+
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.secret_key = "itslogintime"
@@ -14,12 +17,12 @@ def home():
         session['id'] = False
     if 'first_name' not in session:
         session['first_name'] = None
-    return render_template('login_register.html')
+    return render_template('index.html')
 
 @app.route('/register_validate', methods=['POST'])
 def validation():
     error=False
-    mysql = connectToMySQL('login_register')
+    mysql = connectToMySQL('mydb')
     query = "SELECT * FROM users WHERE email = %(e_mail)s "
     data = {
         "e_mail":request.form['email']
