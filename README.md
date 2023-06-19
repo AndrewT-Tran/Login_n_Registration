@@ -50,10 +50,8 @@ When the user initially registers we would log them in automatically, but for lo
 
 On the success page, have a logout button or link. When a user logs out, their session should be cleared. If the user attempts to access the success page (i.e. making a GET request by typing in the url), redirect them back to the login and registration page.
 
-Video: Thinking through using session in this assignment
---------------------------------------------------------
+![image](https://github.com/AndrewT-Tran/Login_n_Registration/assets/112746783/b532ee67-86ea-4b40-a832-9453a52579cc)
 
-<span id="selection-marker-1" class="redactor-selection-marker"></span>
 
 BONUS:
 ------
